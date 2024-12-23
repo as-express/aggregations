@@ -92,34 +92,34 @@ export class UserService {
   }
 
   async getOrderStatistic() {
-    // const res = await this.
-    // const statistics = await this.user.aggregate([
-    // {
-    // $lookup: {
-    // from: 'orders',
-    // localField: '_id',
-    // foreignField: 'user',
-    // as: 'orders',
-    // },
-    // },
-    // {
-    // $addFields: {
-    // totalOrders: { $size: '$orders' },
-    // totalSpent: { $sum: '$orders.totalPrice' },
-    // },
-    // },
-    // {
-    // $sort: { totalOrders: -1 },
-    // },
-    // {
-    // $project: {
-    // _id: 1,
-    // totalOrders: 1,
-    // totalSpent: 1,
-    // },
-    // },
-    // ]);
-    // return statistics;
+    const res = await this.
+    const statistics = await this.user.aggregate([
+    {
+    $lookup: {
+    from: 'orders',
+    localField: '_id',
+    foreignField: 'user',
+    as: 'orders',
+    },
+    },
+    {
+    $addFields: {
+    totalOrders: { $size: '$orders' },
+    totalSpent: { $sum: '$orders.totalPrice' },
+    },
+    },
+    {
+    $sort: { totalOrders: -1 },
+    },
+    {
+    $project: {
+    _id: 1,
+    totalOrders: 1,
+    totalSpent: 1,
+    },
+    },
+    ]);
+    return statistics;
   }
 
   async validateUser(id: string) {
